@@ -1,0 +1,24 @@
+<section  class="header">
+    <!-- <a href="index.html"> <img src="assets/images/box.png" width="140px" height="100%"></a> -->
+    <br> <h1> <u>Login Page</u></h1> 
+   <div class="container">
+   <form #f='ngForm' class="login-email">
+       <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
+       <div class="input-group">
+      <b> UserId: </b><br><br><input [(ngModel)]="logininfo.Username"  name="Username" placeholder="Username Here" type="text">
+       </div> <br> <br>
+       <div class="input-group">
+      <b> Password: </b> <br><br> <input [(ngModel)]="logininfo.Password" name="Password" placeholder="Password Here"  type="password">
+    </div> <br> <br>
+    <div class="input-group">
+        <b> Job Title: </b> <br><br> <input [(ngModel)]="logininfo.Job" name="Job" placeholder="Job Title Here"  type="text">
+      </div> <br>
+      
+       <div class="input-group"> <br> 
+       <input type="button" (click)="login()" class="btn" value="Login"> 
+        </div>
+       <br>
+     
+   </form>
+   </div>
+</section>

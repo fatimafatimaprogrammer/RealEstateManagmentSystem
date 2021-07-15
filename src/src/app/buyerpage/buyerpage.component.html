@@ -1,0 +1,73 @@
+
+<section class="header">
+    <br> <br>
+  
+    <div class="welcomemsg" > Welcome you Have log in as an 'Buyer' </div> <br> <br>
+    <div class="buttonDiv" *ngIf="showMenu">
+  
+    <h2> Tasks You Can do As an Buyer : </h2> <br> <br> 
+  
+    <button (click)="BookTour()">  Book Tour </button> <br> <br>
+    <button (click)="SeeTour()">  See Booked Tours  </button> <br> <br>
+    <button (click)="deleteSold()">  Delete Sold Property  </button> <br> <br>
+    <button (click)="signOut()">  Sign Out </button> <br> <br>
+    
+
+    </div>
+    
+    
+    <div class="container"*ngIf="showTables" >
+        <form #f="ngForm" method="POST" class="login-email"> 
+        <p class="login-text" style="font-size: 2rem; font-weight: 800;"> Book Tour </p>
+          <!-- //there is no need to ask for id as it should be unique and is the primary key so we auto increment that-->
+              <label><b>Enter User Id</b></label>
+             <div class="input-group">
+             <input type="text" name="B_Id" [(ngModel)]= "selectedUser.B_Id"> 
+            </div> 
+             <label> <b>Enter Agent Id </b></label>
+             <div class="input-group">
+             <input type="text" name="A_id" [(ngModel)] = "selectedUser.A_id" >
+             </div>
+             <label> <b>Enter Property Id </b></label>
+             <div class="input-group">
+             <input type="text" name="P_id" [(ngModel)] = "selectedUser.P_id" >
+             </div>
+            <div class="input-group">
+              <input type="button" (click)="registerUser(f)" class="btn" value="Book Tour">
+            </div>
+            <div class="input-group">
+                <input type="button" (click)="goBack()" class="btn" value="Go Back">
+              </div>
+      
+           </form>
+          </div>
+        
+          <div *ngIf="showTours" >
+            <br> <br>
+            <h1><u>Booked Tours by The Buyers</u></h1>
+             <!-- <a routerLink=" " routerLinkActive="active"   >Login</a>  -->
+            
+            <table class="tablestruct"> 
+                <tr style="height: 900;">
+                  <th>Buyer Id</th>
+                  <th>Property Title </th>
+                  <th>Property Address </th>
+                  <th>Agent Id</th> 
+                  <th>Image</th> 
+                </tr>
+                
+                <tr *ngFor="let user of users ; ">
+                    <td > <b> {{ user.B_Id }} </b> </td>
+                    <td> {{ user.Title }}</td>
+                    <td> {{ user.Address }}</td>  
+                    <td> {{ user.A_id }}</td>
+                    <td> <img src="assets/images/j.png" width="250" ></td>
+
+                </tr>
+            </table> <br> 
+          
+            <button style="width: 31%;font-size: 20px;" (click)="goBack()"> Go Back </button>
+
+            </div>
+            
+         </section> 

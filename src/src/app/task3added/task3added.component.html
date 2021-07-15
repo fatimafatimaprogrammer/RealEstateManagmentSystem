@@ -1,0 +1,58 @@
+<div >
+    <h1> <u>Add Property agent</u></h1>
+    <form #f="ngForm" method="POST" class="login-email">
+    <p class="login-text" style="font-size: 1.5rem; font-weight: 400;"> property agent has suceesfully addedd !!!!!!!! </p>
+      <!-- //there is no need to ask for id as it should be unique and is the primary key so we auto increment that-->
+      <br>
+      <br>  
+      <div class="input-group">
+          <input type="button" (click)="fetchAgents()" class="btn" value="click to see results" style="width: 21%;font-size: 23px;color: crimson;font-weight: bolder;border-radius: 10px;">
+         </div>
+         <br>
+         <br>
+         <div class="input-group">
+          <input type="button" (click)="goBackToAdminPage()" class="btn" value="Go Back" style="width: 21%;font-size: 23px;color: crimson;font-weight: bolder;border-radius: 10px;">
+        </div>
+       </form>
+      </div>
+
+      
+  <div *ngIf="finalshow" >
+    <div class="welcomemsg"> <p>{{ message1 }}</p>  </div>
+    <br>
+    <h1 style="font-size: 40px;"><u>Properties</u></h1> <br><br>
+     <!-- <a routerLink=" " routerLinkActive="active"   >Login</a>  -->
+    
+    <table class="tablestruct">
+        <tr style="height: 900;">
+          <th>P_Id</th>
+          <th>Property-Title</th>
+          <th>Property-Address</th>
+          <th>Property-Price</th>
+          <th>A_id</th>
+          <th>Agent Name</th>
+          <th>Agent Username</th>
+          <th>option </th>
+        </tr>
+    
+        <tr *ngFor="let ap of addedAgents; ">
+            <td > <b> {{ap.P_id }} </b> </td>
+            <td> {{ ap.Title }}</td>
+            <td>{{ ap.Address }}</td>
+            <td>{{ ap.Price }}</td>
+            <td>{{ ap.A_id }}</td>
+            <td>{{ ap.Name }}</td>
+            <td>{{ ap.Username }}</td>
+           <td class="delrow"> <button class='delete' (click)='deleteProperty(ap.P_id)'><img src="assets/images/del.png" width="40" > </button></td>
+          </tr>
+    </table> <br> <br>
+    <br> 
+    <p   (click)="getAvailableAgents()" class="addnewUser"> <b> &nbsp; &nbsp; Available Agents &nbsp; &nbsp; </b> </p>
+    <br>
+    <br>
+    
+    <input type="button" (click)="goBackToAdminPage()" class="btn" value="Go Back" style="width: 21%;font-size: 23px;color: crimson;font-weight: bolder;border-radius: 10px;">
+    
+    </div>
+    
+    <br>

@@ -1,0 +1,36 @@
+
+<section class="header">
+    <br> <br>
+    <div *ngIf="showTables" >
+  <div class="welcomemsg"> <p> {{ message }}</p>  </div>
+  <br> <br>
+  <h1><u>Registered Agents</u></h1> <br> <br>
+
+  <table class="tablestruct"> 
+      <tr style="height: 900;">
+        <th>Id</th>
+        <th>Name </th>
+        <th>UserName</th>
+        <th>Passwords</th>
+        <th>Phone</th>
+        <th>Job</th>
+        <th>Is_ban</th>
+        <th>Options </th>
+      </tr>
+      
+      <tr *ngFor="let user of users ; ">
+          <td > <b> {{ user.U_id }} </b> </td>
+          <td> {{ user.Name }}</td>
+          <td> {{ user.Username }}</td>
+          <td>{{ user.Password }}</td>
+          <td> {{ user.Phone }}</td>
+          <td>{{ user.Job }}</td>
+          <td > {{user.Is_ban}} </td>
+          <td class="delrow"> <button class="btn" (click)='deleteUser(user.U_id)' style="width: 45%;font-size: 13px;color: crimson;font-weight: bolder;border-radius: 15px;"> Ban </button></td>
+  
+        </tr>
+  </table> <br> <br>
+   <input type="button" (click)="goBackToAdminPage()" class="btn" value="Go Back" style="width: 21%;font-size: 23px;color: crimson;font-weight: bolder;border-radius: 10px;">
+
+  </div>
+</section>

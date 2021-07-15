@@ -1,0 +1,111 @@
+
+<section class="header">
+    <br> <br>
+  
+    <div class="welcomemsg"> Welcome you Have log in as an 'agent' </div> <br> <br>
+    
+    <div class="buttonDiv" *ngIf="showMenu">
+  
+    <h2> Tasks You Can do As an Agent : </h2> <br> <br> 
+    
+    <button (click)="seeToursAssigned()">  View Assigned Tours </button> <br> <br>
+    <button (click)="unbooking()"> Unbook Tours </button> <br> <br>
+    <button (click)="seeCost()">   Successful Tours </button> <br> <br>
+    <button (click)="signOut()"> Sign Out </button> <br> <br>
+    
+  
+    </div>
+    
+
+    <div *ngIf="showTables"> 
+        <h2> Assigned Properties </h2> <br> <br> 
+    
+        <!-- <a routerLink=" " routerLinkActive="active"   >Login</a>  -->
+       <table class="tablestruct"> 
+          <tr style="height: 900;width: 25%;">
+            <th>Serial#</th>
+            <th> Property Id</th>
+            <th> Agent Id</th>
+            <th>Title</th>
+            <th>Location</th>
+            <th> Range</th>
+            <th>Image </th>
+          </tr>
+          
+          <tr *ngFor="let user of users3 ; let i = index;">
+            <td style="width: 14%;" > <b> {{ i+1 }} </b> </td>
+            <td style="width: 20%;"><b> {{ user.P_Id }} </b> </td>
+            <td style="width: 22%;">{{ user.A_id }}</td>
+            <td style="width: 22%;">{{ user.Title }}</td>
+            <td style="width: 22%;">{{ user.Address }}</td>
+            <td style="width: 35%;">{{ user.Price }}</td>
+            <td> <img src="assets/images/j.png" width="250" ></td>
+    
+          </tr>
+          <button style="width: 71%;font-size: 20px;" (click)="goBack()"> Go Back </button>
+      </table> <br> <br>
+     </div>
+    
+     
+
+     <div *ngIf="showUnbook">
+        <h2> Unbooking The Property Tours </h2>  
+      
+        <table class="tablestruct"> 
+          <tr style="height: 900;">
+            <th>Serial Id</th>
+            <th>Property Id</th>
+            <th>Agent Id</th>
+            <th>Property Id </th>
+            <th> Range </th>
+            <th> Image</th>
+            <th>Options</th>  
+        </tr>
+          
+        <tr *ngFor="let user of users ; let i = index;">
+            <td style="width: 14%;" > <b> {{ i+1 }} </b> </td>
+            <td style="width: 20%;"><b> {{ user.P_id }} </b> </td>
+            <td style="width: 22%;">{{ user.A_id }}</td>
+            <td style="width: 22%;">{{ user.Address }}</td>
+            <td style="width: 35%;">{{ user.Price }}</td>
+            <td> <img src="assets/images/j.png" width="250" ></td>
+      
+              <td style="width: 65%;" class="delrow"> <button class='delete' (click)='deleteTour(user.P_id)'><img src="assets/images/del.png" width="40" > </button></td>
+      
+            </tr>
+      
+      </table> <br> <br>
+      <button style="width: 51%;font-size: 20px;" (click)="goBack()"> Go Back </button>
+
+      </div>
+      
+      
+    <div *ngIf="showTheCost"> 
+      <h2> Assigned Properties </h2> <br> <br> 
+  
+      <!-- <a routerLink=" " routerLinkActive="active"   >Login</a>  -->
+     <table class="tablestruct"> 
+        <tr style="height: 900;width: 25%;">
+          <th> Bid Cost </th>
+          <th> Buyer Id</th>
+          <th> Property Id</th>
+          <th>Title</th>
+          <th>Location</th>
+          <th>Image </th>
+        </tr>
+        
+        <tr *ngFor="let user of users2 ; let i = index;">
+          <td style="width: 14%;" > <b> {{user.BidCost}} </b> </td>
+          <td style="width: 20%;"><b> {{ user.B_Id }} </b> </td>
+          <td style="width: 22%;">{{ user.P_id }}</td>
+          <td style="width: 22%;">{{ user.Title }}</td>
+          <td style="width: 22%;">{{ user.Address }}</td>
+          <td> <img src="assets/images/j.png" width="250" ></td>
+  
+        </tr>
+        <button style="width: 71%;font-size: 20px;" (click)="goBack()"> Go Back </button>
+    </table> <br> <br>
+   </div>
+  
+   
+

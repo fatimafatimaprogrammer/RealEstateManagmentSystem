@@ -1,0 +1,115 @@
+
+<section class="header">
+  <div *ngIf="showTables" >
+  <div class="welcomemsg"> <p>{{ message }}</p>  </div>
+  <br>
+  <h1 style="font-size: 40px;"><u>Properties</u></h1> <br><br>
+   <!-- <a routerLink=" " routerLinkActive="active"   >Login</a>  -->
+  
+  <table class="tablestruct">
+      <tr style="height: 900;">
+        <th>P_Id</th>
+        <th>Property-Title</th>
+        <th>Property-Address</th>
+        <th>Property-Price</th>
+        <th>Property-Is_sold </th>
+        <th>Image</th>
+        <th>Delete </th>
+        <th>Edit </th>
+      </tr>
+  
+      <tr *ngFor="let myproperty of properties ; ">
+          <td > <b> {{ myproperty.P_id }} </b> </td>
+          <td> {{ myproperty.Title }}</td>
+          <td>{{ myproperty.Address }}</td>
+          <td>{{ myproperty.Price }}</td>
+          <td>{{ myproperty.Is_sold }}</td>
+          <td> <img src="assets/images/p.jpeg" width="250" ></td>
+         <td class="delrow"> <button class='delete' (click)='deleteProperty(myproperty.P_id)'><img src="assets/images/del.png" width="40" > </button></td>
+         <td class="delrow"> <button class='delete' (click)='showform1()'><img src="assets/images/edit.jpg" width="60"  > </button></td>
+     
+        </tr>
+  </table> <br> <br>
+  <p   (click)="showform()" class="addnewUser"> <b> &nbsp; &nbsp; You Want to Add new Property ? &nbsp; &nbsp; </b> </p>
+  <br>  
+  <input type="button" (click)="goBackToAdminPage()" class="btn" value="Go Back" style="width: 21%;font-size: 23px;color: crimson;font-weight: bolder;border-radius: 10px;">
+  
+  </div>
+  
+  <br>
+  <div *ngIf="show1" >
+    <h1> <u>Edit Property</u></h1>
+    <div class="container" >
+    <form #f="ngForm" method="POST" class="login-email">
+    <p class="login-text" style="font-size: 2rem; font-weight: 800;"> Edit </p>
+      <!-- //there is no need to ask for id as it should be unique and is the primary key so we auto increment that-->
+         <label><b> property Id</b></label>
+         <div class="input-group">
+         <input type="text" name="P_id" placeholder="Enter User Id" [(ngModel)]= "selectedProperty.P_id" >
+        </div>
+         <label> <b> Property Title</b></label>
+         <div class="input-group">
+         <input type="text" name="Title" placeholder="Enter Property title" [(ngModel)] = "selectedProperty.Title"  >
+         </div>
+         <label><b>Property Address</b></label>
+         <div class="input-group">
+         <input type="text" name="Address" [(ngModel)] = "selectedProperty.Address" placeholder="Enter Property address">
+         </div>
+         <label><b>property Price</b></label>
+         <div class="input-group">
+          <input type="text" name="Price" [(ngModel)] = "selectedProperty.Price" placeholder="Enter Property price">
+        </div>
+         <label><b>Property sold? (true if yes )</b></label>
+        <div class="input-group">
+         <input type="text" name="Is_sold" [(ngModel)] = "selectedProperty.Is_sold">
+       </div>
+         <div class="input-group">
+          <input type="button" (click)="EditProperty(f)" class="btn" value="Edit Property">
+        </div>
+        <div class="input-group">
+          <input type="button" (click)="goBack()" class="btn" value="Go Back">
+        </div>
+       </form>
+      </div>
+    </div>
+  
+  
+  <div *ngIf="show" >
+  <h1> <u>Add Property</u></h1>
+  <div class="container" >
+  <form #f="ngForm" method="POST" class="login-email">
+  <p class="login-text" style="font-size: 2rem; font-weight: 800;"> ADD </p>
+    <!-- //there is no need to ask for id as it should be unique and is the primary key so we auto increment that-->
+       <label><b> User Id</b></label>
+       <div class="input-group">
+       <input type="text" name="P_id" placeholder="Enter User Id" [(ngModel)]= "selectedProperty.P_id" >
+      </div>
+       <label> <b> Property Title</b></label>
+       <div class="input-group">
+       <input type="text" name="Title" placeholder="Enter Property title" [(ngModel)] = "selectedProperty.Title"  >
+       </div>
+       <label><b>Property Address</b></label>
+       <div class="input-group">
+       <input type="text" name="Address" [(ngModel)] = "selectedProperty.Address" placeholder="Enter Property address">
+       </div>
+       <label><b>property Price</b></label>
+       <div class="input-group">
+        <input type="text" name="Price" [(ngModel)] = "selectedProperty.Price" placeholder="Enter Property price">
+      </div>
+       <label><b>Property sold? (true if yes )</b></label>
+      <div class="input-group">
+       <input type="text" name="Is_sold" [(ngModel)] = "selectedProperty.Is_sold">
+     </div>
+       <div class="input-group">
+        <input type="button" (click)="registerProperty(f)" class="btn" value="Add Property">
+      </div>
+      <div class="input-group">
+        <input type="button" (click)="goBack()" class="btn" value="Go Back">
+      </div>
+     </form>
+    </div>
+  </div>
+    </section>
+  
+  
+  

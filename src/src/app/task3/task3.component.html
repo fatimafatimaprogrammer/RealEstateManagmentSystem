@@ -1,0 +1,69 @@
+
+<section class="header">
+  <div *ngIf="showTables" >
+  <div class="welcomemsg"> <p>{{ message }}</p>  </div>
+  <br>
+  <h1 style="font-size: 40px;"><u>Properties</u></h1> <br><br>
+   <!-- <a routerLink=" " routerLinkActive="active"   >Login</a>  -->
+  
+  <table class="tablestruct">
+      <tr style="height: 900;">
+        <th>P_Id</th>
+        <th>Property-Title</th>
+        <th>Property-Address</th>
+        <th>Property-Price</th>
+        <th>Property-Is_sold </th>
+        <th>Image</th>
+        <th>option </th>
+      </tr>
+  
+      <tr *ngFor="let myproperty of properties ; ">
+          <td > <b> {{ myproperty.P_id }} </b> </td>
+          <td> {{ myproperty.Title }}</td>
+          <td>{{ myproperty.Address }}</td>
+          <td>{{ myproperty.Price }}</td>
+          <td>{{ myproperty.Is_sold }}</td>
+          <td> <img src="assets/images/p.jpeg" width="250" ></td>
+         <td class="delrow"> <button class='delete' (click)='deleteProperty(myproperty.P_id)'><img src="assets/images/del.png" width="40" > </button></td>
+        </tr>
+  </table> <br> <br>
+  <p   (click)="showform()" class="addnewUser"> <b> &nbsp; &nbsp; Assign Agent ? &nbsp; &nbsp; </b> </p>
+  <br>
+  <br>
+
+  <p   (click)="getAvailableAgents()" class="addnewUser"> <b> &nbsp; &nbsp; Available Agents &nbsp; &nbsp; </b> </p>
+  <br>
+  <br>
+  
+  <input type="button" (click)="goBackToAdminPage()" class="btn" value="Go Back" style="width: 21%;font-size: 23px;color: crimson;font-weight: bolder;border-radius: 10px;">
+  
+  </div>
+  
+  <br>
+  
+  <div *ngIf="show" >
+  <h1> <u>Add Property agent</u></h1>
+  <div class="container" >
+  <form #f="ngForm" method="POST" class="login-email">
+  <p class="login-text" style="font-size: 2rem; font-weight: 800;"> ADD </p>
+    <!-- //there is no need to ask for id as it should be unique and is the primary key so we auto increment that-->
+       <label><b> property Id</b></label>
+       <div class="input-group">
+       <input type="text" name="U_id" placeholder="Enter User Id" [(ngModel)]= "selectedAgent.P_id" >
+      </div>
+       <label> <b> agent ID</b></label>
+       <div class="input-group">
+       <input type="text" name="A_id" placeholder="Enter Agent id" [(ngModel)] = "selectedAgent.A_id"  >
+       </div>
+       <div class="input-group">
+        <input type="button" (click)="registerPropertyAgent(f)" class="btn" value="Add Property agent">
+      </div>
+      <div class="input-group">
+        <input type="button" (click)="goBack()" class="btn" value="Go Back">
+      </div>
+     </form>
+    </div>
+  </div>
+    </section>
+  
+

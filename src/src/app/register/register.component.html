@@ -1,0 +1,78 @@
+
+<section class="header">
+    <br> <br>
+    <div *ngIf="showTables" >
+  <div class="welcomemsg"> <p>{{ message }}</p>  </div>
+  <br> <br>
+  <h1><u>Registered users</u></h1>
+   <!-- <a routerLink=" " routerLinkActive="active"   >Login</a>  -->
+  
+  <table class="tablestruct"> 
+      <tr style="height: 900;">
+        <th>Id</th>
+        <th>Name </th>
+        <th>UserName</th>
+        <th>Passwords</th>
+        <th>Phone</th>
+        <th>Job</th>
+        <th>Options </th>
+      </tr>
+      
+      <tr *ngFor="let user of users ; ">
+          <td > <b> {{ user.U_id }} </b> </td>
+          <td> {{ user.Name }}</td>
+          <td> {{ user.Username }}</td>
+          <td>{{ user.Password }}</td>
+          <td> {{ user.Phone }}</td>
+          <td>{{ user.Job }}</td>
+          <td class="delrow"> <button class='delete' (click)='deleteUser(user.U_id)'><img src="assets/images/del.png" width="40" > </button></td>
+  
+        </tr>
+  </table> <br> <br>
+  <p   (click)="showform()" class="addnewUser"> <b> &nbsp; &nbsp; You Want to Add new User ? &nbsp; &nbsp; </b> </p> <br>
+  <input type="button" (click)="goBackToAdminPage()" class="btn" value="Go Back" style="width: 21%;font-size: 23px;color: crimson;font-weight: bolder;border-radius: 10px;">
+
+  </div>
+  
+  <br>
+  
+  <div *ngIf="show" > 
+  <div class="container" >
+  <form #f="ngForm" method="POST" class="login-email"> 
+  <p class="login-text" style="font-size: 2rem; font-weight: 800;"> Register </p>
+    <!-- //there is no need to ask for id as it should be unique and is the primary key so we auto increment that-->
+        <label><b>Enter User Id</b></label>
+       <div class="input-group">
+       <input type="text" name="U_id" [(ngModel)]= "selectedUser.U_id"> 
+      </div> 
+       <label> <b>Enter name </b></label>
+       <div class="input-group">
+       <input type="text" name="Name" [(ngModel)] = "selectedUser.Name" >
+       </div>
+       <label> <b>Enter username </b></label>
+       <div class="input-group">
+       <input type="text" name="Username" [(ngModel)] = "selectedUser.Username" >
+       </div>
+       <label><b>Enter password</b></label>
+       <div class="input-group">
+       <input type="password" name="Password" [(ngModel)] = "selectedUser.Password">
+       </div>
+       <label><b>Enter Your Job</b></label>
+       <div class="input-group">
+        <input type="text" name="Job" [(ngModel)] = "selectedUser.Job">
+      </div>
+      <label><b>Enter Your phone number</b></label>
+       <div class="input-group">
+        <input type="text" name="Phone" [(ngModel)] = "selectedUser.Phone">
+      </div>
+       <div class="input-group">
+        <input type="button" (click)="registerUser(f)" class="btn" value="Register user">
+      </div>
+      <div class="input-group">
+        <input type="button" (click)="goBack()" class="btn" value="Go Back">
+      </div>
+
+     </form>
+    </div>
+  </div>
+    </section>
